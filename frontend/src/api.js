@@ -1,5 +1,8 @@
-const API_URL = "https://todo-app-vn29.onrender.com/api";
+// src/api.js
+import axios from 'axios';
 
-fetch(`${API_URL}/todos`)  // ✅ Correct path
-  .then(res => res.json())
-  .then(data => console.log(data));
+const instance = axios.create({
+  baseURL: 'https://todo-app-vn29.onrender.com/api/todos',
+});
+
+export default instance;
