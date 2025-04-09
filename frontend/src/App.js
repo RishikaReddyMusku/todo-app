@@ -6,13 +6,16 @@ import TodoList from './components/TodoList';
 const App = () => {
   const [todos, setTodos] = useState([]);
 
-  useEffect(() => {
-    const fetchTodos = async () => {
-      const res = await axios.get('/');
-      setTodos(res.data);
-    };
-    fetchTodos();
-  }, []);
+// src/App.js or wherever you're fetching
+const API_URL = "https://todo-app-vn29.onrender.com/api";
+
+useEffect(() => {
+  fetch(`${API_URL}/todos`)
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.error("Fetch error:", err));
+}, []);
+
 
   const addTodo = (todo) => setTodos([...todos, todo]);
 
